@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://aiacr2.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_aiacr2 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_BVIXmzxvaSTLm2jOej2Cyo24nOVuc87iRbyVLWNRNW+ACRA4iMMS }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_ef28aa02e172436698d1aaff4483f0bc }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_4caa7db24eb74cb0bba304944a451b03 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: aiacr2.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_aiacr2 }}/aiacr2.azurecr.io/check:${{ github.sha }}
+        tags: aiacr2.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_ef28aa02e172436698d1aaff4483f0bc }}/aiacr2.azurecr.io/check:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'DPhelpdesk'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_dc01d22af30c4d6289075d66d170b1df }}
-        images: 'aiacr2.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_aiacr2 }}/aiacr2.azurecr.io/check:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_017577be4633410cbd6f9dc3eeaff51e }}
+        images: 'aiacr2.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_ef28aa02e172436698d1aaff4483f0bc }}/aiacr2.azurecr.io/check:${{ github.sha }}'
